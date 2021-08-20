@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31613.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldBadgeChallenges", "GoldBadgeChallenges\GoldBadgeChallenges.csproj", "{BCFC880B-B12C-40D9-B4B8-15DCE207D00F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BCFC880B-B12C-40D9-B4B8-15DCE207D00F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCFC880B-B12C-40D9-B4B8-15DCE207D00F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCFC880B-B12C-40D9-B4B8-15DCE207D00F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCFC880B-B12C-40D9-B4B8-15DCE207D00F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3B5269F2-BE84-43ED-9BD2-CF5E283436B2}
+	EndGlobalSection
+EndGlobal
