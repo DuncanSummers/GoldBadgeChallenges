@@ -14,15 +14,15 @@ namespace Challenge1_Cafe_Console
         public void Run()
         {
             SeedMenu();
-            Menu();
+            Menus();
         }
 
-        public void SeedMenu()
+        private void SeedMenu()
         {
             Console.WriteLine("Seeding menu...");
 
-            Menu meal1 = new Menu(1, "Burger", "Flame-broiled burger made the Komodo way", "brioche bun, ground meat, ground pepper, salt, pepperjack cheese, lettuce, onions, aoili, and mustard", 18.00m);
-            Menu meal2 = new Menu(2, "Chicken", "A Whole rotisserie chicken, nashville fried", "chicken, batter, oil", 25.00m);
+            Menu meal1 = new Menu(1, "Burger", "Flame-broiled burger made the Komodo way", "brioche bun, ground meat, ground pepper, salt, pepperjack cheese, lettuce, onions, aioli, and mustard", 18.00m);
+            Menu meal2 = new Menu(2, "Chicken", "A Whole rotisserie chicken, Nashville fried", "chicken, batter, oil", 25.00m);
             Menu meal3 = new Menu(3, "Cheese Curds", "Fresh Wisconsin cheese curds fried to golden perfection", "cheese curds, batter, oil, jalapeno-ranch", 8.50m);
             Menu meal4 = new Menu(4, "Oysters", "Half-shell East-Coast oysters on a bed of ice", "Oyster, salt, horseradish, tobasco", 21.00m);
             Menu meal5 = new Menu(5, "Corndogs", "All-American beef frank, crispy dogs", "hot dog, corn meal batter, oil, wooden stick, mustard, ketchup", 6.99m);
@@ -35,7 +35,7 @@ namespace Challenge1_Cafe_Console
 
         }
 
-        public void Menu()
+        private void Menus()
         {
             bool viewingMenu = true;
             while (viewingMenu)
@@ -94,9 +94,9 @@ namespace Challenge1_Cafe_Console
 
         public void DisplayItem(Menu menu)
         {
-            Console.WriteLine($"Meal #{menu.MealName}: {menu.MealName} - {menu.MealPrice}\n" +
+            Console.WriteLine($"Meal #{menu.MealNumber}: {menu.MealName} - {menu.MealPrice}\n" +
                 $"{menu.MealDescription}\n" +
-                $"Ingredients: {menu.MealIngredients}");
+                $"Ingredients: {menu.MealIngredients}\n");
         }
 
         public void AddMenuItem()
@@ -123,6 +123,8 @@ namespace Challenge1_Cafe_Console
             Console.Write("Meal Price: ");
             decimal price = decimal.Parse(Console.ReadLine());
             newMeal.MealPrice = price;
+
+            _menu.AddMenuItem(newMeal);
         }
 
         public void DeleteMenuItem()

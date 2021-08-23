@@ -57,7 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GoldBadgeChallenges\Challenge1_Cafe_Repository.csproj">
-      <Project>{BCFC880B-B12C-40D9-B4B8-15DCE207D00F}</Project>
+      <Project>{bcfc880b-b12c-40d9-b4b8-15dce207d00f}</Project>
       <Name>Challenge1_Cafe_Repository</Name>
     </ProjectReference>
   </ItemGroup>

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Challenge1_Cafe_Console
 {
-    public class Program
+    class Program
     {
         static void Main(string[] args)
         {
-            ProgramUI menu = new ProgramUI();
-            menu.Run();
+            ProgramUI cafe = new ProgramUI();
+            cafe.Run();
         }
     }
 }
