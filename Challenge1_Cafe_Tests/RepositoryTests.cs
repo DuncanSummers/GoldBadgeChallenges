@@ -1,4 +1,4 @@
-﻿using GoldBadgeChallenges;
+﻿using Challenge1_Cafe_Repository;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -44,14 +44,12 @@ namespace Challenge1_Cafe_Tests
 
             bool menuHasMeal = newMeal.Contains(meal);
             Assert.IsTrue(menuHasMeal);
-
         }
 
         [TestMethod]
         public void DeleteMenuItem_ShouldReturnTrue()
         {
             bool deleteMeal = _menus.DeleteMenuItem(_items.MealName);
-
             Assert.IsTrue(deleteMeal);
         }
     }

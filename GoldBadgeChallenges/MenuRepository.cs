@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GoldBadgeChallenges
+namespace Challenge1_Cafe_Repository
 {
     public class MenuRepository
     {
@@ -17,23 +17,43 @@ namespace GoldBadgeChallenges
             bool wasAdded = _menus.Count > startingCount;
             return wasAdded;
         }
-
-        public bool DeleteMenuItem(Menu menu)
+        public List<Menu> ReadMenu()
         {
-            bool deleteMeal = _menus.Remove(menu);
-            return deleteMeal;
+            return _menus;
         }
 
-        public Menu ReadMenu(int num)
+        public Menu ReadMenuItem(string meal)
         {
             foreach (Menu menu in _menus)
             {
-                if (menu.MealNumber == num)
+                if (menu.MealName == meal)
                 {
                     return menu;
                 }
             }
+
             return null;
+        }
+        public bool DeleteMenuItem(string meal)
+        {
+            Menu menu = ReadMenuItem(meal);
+
+            if(menu == null)
+            {
+                return false;
+            }
+
+            int startingCount = _menus.Count;
+            _menus.Remove(menu);
+
+            if(startingCount > _menus.Count)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
