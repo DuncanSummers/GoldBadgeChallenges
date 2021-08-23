@@ -8,26 +8,17 @@ namespace GoldBadgeChallenges
 {
     public class Menu
     {
-        public Dictionary<string, decimal> _items = new Dictionary<string, decimal>
+        public Menu() { }
+        public Menu (int num, string meal, string descr, string ingr, decimal price )
         {
-            { "Burger", 35.00m},
-            { "Chicken", 28.50m},
-            { "Oysters", 23.00m},
-            { "Roasted Duck", 45.00m },
-            { "Milkshake", 12.00m },
-            { "Cheesecake", 18.00m }
-        };
-
-        public Menu (int num, string meal, string descr, string ingr, decimal prices )
-        {
-            MealNumber = num;
+            MealName = num;
             MealName = meal;
             MealDescription = descr;
             MealIngredients = ingr;
-            MealPrice = prices;
+            MealPrice = price;
         }
 
-        public int MealNumber { get; set; }
+        public int MealName { get; set; }
         public string MealName { get; set; }
         public string MealDescription { get; set; }
         public string MealIngredients { get; set; }
