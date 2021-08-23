@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoldBadgeChallenges", "GoldBadgeChallenges\GoldBadgeChallenges.csproj", "{BCFC880B-B12C-40D9-B4B8-15DCE207D00F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge1_Cafe_Repository", "GoldBadgeChallenges\Challenge1_Cafe_Repository.csproj", "{BCFC880B-B12C-40D9-B4B8-15DCE207D00F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge1_Cafe_Tests", "Challenge1_Cafe_Tests\Challenge1_Cafe_Tests.csproj", "{9C0BAAE1-4913-4C0D-B9C4-41F4356AFF3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge1_Cafe_Console", "Challenge1_Cafe_Console\Challenge1_Cafe_Console.csproj", "{D64DA945-F4E9-4962-9FEE-34138E0C4631}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{BCFC880B-B12C-40D9-B4B8-15DCE207D00F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BCFC880B-B12C-40D9-B4B8-15DCE207D00F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BCFC880B-B12C-40D9-B4B8-15DCE207D00F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C0BAAE1-4913-4C0D-B9C4-41F4356AFF3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C0BAAE1-4913-4C0D-B9C4-41F4356AFF3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C0BAAE1-4913-4C0D-B9C4-41F4356AFF3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C0BAAE1-4913-4C0D-B9C4-41F4356AFF3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D64DA945-F4E9-4962-9FEE-34138E0C4631}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D64DA945-F4E9-4962-9FEE-34138E0C4631}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D64DA945-F4E9-4962-9FEE-34138E0C4631}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D64DA945-F4E9-4962-9FEE-34138E0C4631}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace Challenge1_Cafe_Console
 {
-    class PogramUI
+    public class ProgramUI
     {
+        public void Run()
+        {
+            Menu();
+        }
+        public void Menu()
+        {
+            bool viewingMenu = true;
+            while (viewingMenu)
+            {
+
+            }
+        }
     }
 }
