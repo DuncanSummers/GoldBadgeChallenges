@@ -12,12 +12,12 @@ namespace Challenge2_Claims_Repository
         public Claims() { }
         public Claims(int claimID, ClaimType claimType, string descriptionOfClaim, decimal claimAmount, DateTime dateOfIncident, DateTime dateOfClaim)
         {
-            claimID = ClaimID;
-            claimType = TypeOfClaim;
-            descriptionOfClaim = ClaimDescription;
-            claimAmount = ClaimAmount;
-            dateOfIncident = DateOfIncident;
-            dateOfClaim = DateOfClaim;
+            ClaimID = claimID;
+            TypeOfClaim = claimType;
+            ClaimDescription = descriptionOfClaim;
+            ClaimAmount = claimAmount;
+            DateOfIncident = dateOfIncident;
+            DateOfClaim = dateOfClaim;
         }
 
         public int ClaimID { get; set; }
@@ -30,8 +30,8 @@ namespace Challenge2_Claims_Repository
         { 
             get
             {
-                int numberOfDays = Convert.ToInt32(DateOfClaim - DateOfIncident);
-                if (numberOfDays > 30)
+                double numberOfDays = (DateOfClaim - DateOfIncident).TotalDays;
+                if (numberOfDays > 30d)
                 {
                     return false;
                 }
