@@ -10,7 +10,7 @@ namespace Challenge2_Claims_Repository
     public class Claims
     {
         public Claims() { }
-        public Claims(int claimID, ClaimType claimType, string descriptionOfClaim, decimal claimAmount, DateTime dateOfIncident, DateTime dateOfClaim, bool isValid)
+        public Claims(int claimID, ClaimType claimType, string descriptionOfClaim, decimal claimAmount, DateTime dateOfIncident, DateTime dateOfClaim)
         {
             claimID = ClaimID;
             claimType = TypeOfClaim;
@@ -18,7 +18,6 @@ namespace Challenge2_Claims_Repository
             claimAmount = ClaimAmount;
             dateOfIncident = DateOfIncident;
             dateOfClaim = DateOfClaim;
-            isValid = IsValid;
         }
 
         public int ClaimID { get; set; }

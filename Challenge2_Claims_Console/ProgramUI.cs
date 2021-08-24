@@ -10,16 +10,27 @@ namespace Challenge2_Claims_Console
 {
     public class ProgramUI
     {
-        private readonly ClaimsRepository _claimsRepo = new ClaimsRepository();
+        private readonly ClaimsRepository _claims = new ClaimsRepository();
         public void Run()
         {
-            SeedClaims();
+            ClaimsQueue();
             Menu();
         }
 
-        private void SeedClaims()
+        private void ClaimsQueue()
         {
+            Console.WriteLine("Seeding queue...");
 
+            Claims claim1 = new Claims(1, ClaimType.Car, "Car accident on 465.", 400.00m, new DateTime(2018, 4, 25), new DateTime(2018, 4, 27));
+            Claims claim2 = new Claims(2, ClaimType.Home, "House fire in kitchen.", 4000.00m, new DateTime(2018, 4, 11), new DateTime(2018, 4, 12));
+            Claims claim3 = new Claims(3, ClaimType.Theft, "Stolen pancakes.", 4.00m, new DateTime(2018, 4, 27), new DateTime(2018, 1, 18));
+
+            _claims.AddNewClaim(claim1);
+            _claims.AddNewClaim(claim2);
+            _claims.AddNewClaim(claim3);
+ 
+            Thread.Sleep(1800);
+            Console.Clear();
         }
 
         private void Menu()
@@ -28,7 +39,7 @@ namespace Challenge2_Claims_Console
             while (viewingMenu)
             {
                 Console.WriteLine("Welcome to Komodo Insurance Claims Department\n\n" +
-                    "Menu:\n\n" +
+                    "Choose a menu item:\n\n" +
                     "1. See all claims\n" +
                     "2. Take care of next claim\n" +
                     "3. Enter a new claim\n" +
@@ -68,7 +79,7 @@ namespace Challenge2_Claims_Console
         {
             Console.Clear();
 
-            List<Claims> claimsList = _claimsRepo.ReadAllClaims();
+            Queue<Claims> claimsList = _claims.ReadAllClaims();
 
             foreach (Claims claim in claimsList)
             {
@@ -80,6 +91,38 @@ namespace Challenge2_Claims_Console
         public void DisplayClaim(Claims claimItem)
         {
             Console.WriteLine($"ClaimID: {claimItem.ClaimID} | Type: {claimItem.TypeOfClaim} | Description: {claimItem.ClaimDescription} | Amount: {claimItem.ClaimAmount} | DateOfAccident: {claimItem.DateOfIncident} | DateOfClaim: {claimItem.DateOfClaim} | IsValid: {claimItem.IsValid}");
+        }
+
+        public void TakeCareOfNextClaim()
+        {
+            
+            Console.Clear();
+            bool viewingQueue = true;
+            while (viewingQueue)
+            {
+                Console.WriteLine("Here are the details for the next claim to be handled: ");
+                Claims claimObject = _claims.GrabNextClaim();
+                Console.WriteLine($"ClaimID: {claimObject.ClaimID} | Type: {claimObject.TypeOfClaim} | Description: {claimObject.ClaimDescription} | Amount: {claimObject.ClaimAmount} | DateOfAccident: {claimObject.DateOfIncident} | DateOfClaim: {claimObject.DateOfClaim} | IsValid: {claimObject.IsValid}");
+                
+                Console.WriteLine("Do you want to deal with this claim now(y/n)?");
+               
+                string input = Console.ReadLine();
+                if (input == "y")
+                {
+                    _claims.DequeueExistingClaim();
+                }
+                else if (input == "n")
+                {
+                    viewingQueue = false;
+                }
+                else
+                {
+                    Console.WriteLine("Please enter a valid reponse...");
+                }
+            }
+            Console.Clear();
+            Console.WriteLine("Returning to menu...");
+            Thread.Sleep(1800);
         }
 
 
@@ -109,13 +152,18 @@ namespace Challenge2_Claims_Console
             decimal claimAmount = decimal.Parse(Console.ReadLine());
             newClaim.ClaimAmount = claimAmount;
 
-            Console.WriteLine("DateOfAccident: ");
+            Console.WriteLine("DateOfAccident(yyyy/mm/dd): ");
+            DateTime dateOfIncident = Convert.ToDateTime(Console.ReadLine());
+            newClaim.DateOfIncident = dateOfIncident;
 
-            Console.WriteLine("DateOfClaim: ");
+            Console.WriteLine("DateOfClaim(yyyy/mm/dd): ");
+            DateTime dateOfClaim = Convert.ToDateTime(Console.ReadLine());
+            newClaim.DateOfClaim = dateOfClaim;
 
+            Console.WriteLine(newClaim.IsValid);
+
+            _claims.AddNewClaim(newClaim);
             
-            
-
         }
     }
 }

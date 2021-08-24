@@ -33,6 +33,8 @@ namespace Challenge1_Cafe_Console
             _menu.AddMenuItem(meal4);
             _menu.AddMenuItem(meal5);
 
+            Thread.Sleep(2000);
+            Console.Clear();
         }
 
         private void Menus()

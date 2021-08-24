@@ -15,7 +15,7 @@ namespace Challenge2_Claims_Tests
         public void Arrange()
         {
             _claimsRepo = new ClaimsRepository();
-            _claimsItems = new Claims(1, ClaimType.Car, "Car accident on 465", 400.00m, DateTime{ 4 / 25 / 2018 }, DateTime{ 4 / 27 / 2018}, true);
+            _claimsItems = new Claims(1, ClaimType.Car, "Car accident on 465", 400.00m, new DateTime(2018, 4, 25), new DateTime(2018, 4, 27));
             _claimsRepo.AddNewClaim(_claimsItems);
         }
 
@@ -39,7 +39,7 @@ namespace Challenge2_Claims_Tests
 
             newClaim.AddNewClaim(claimID);
 
-            List<Claims> readClaim = newClaim.ReadAllClaims();
+            Queue<Claims> readClaim = newClaim.ReadAllClaims();
             
             bool newClaimHasID = readClaim.Contains(claimID);
             Assert.IsTrue(newClaimHasID);
@@ -47,23 +47,9 @@ namespace Challenge2_Claims_Tests
         }
 
         [TestMethod]
-        public void UpdateExistingContent_ShouldUpdate()
+        public void DequeueClaim_ShouldReturnTrue()
         {
-            Claims updatedClaim = new Claims(1, ClaimType.Car, "Car accident on 465", 600.00m, DateTime{ 4 / 25 / 2018 }, DateTime{ 4 / 27 / 2018}, true);
-
-            _claimsRepo.UpdateExistingClaim(1, updatedClaim);
-
-            var expected = updatedClaim.ClaimAmount;
-            var actual = _claimsRepo.ReadSpecificClaim(1).ClaimAmount;
-            // var actual = _repo.GetContentByTitle("TWISTED PAIR").GenreType;
-            // ​
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestMethod]
-        public void DeleteClaim_ShouldReturnTrue()
-        {
-            bool deleteClaim = _claimsRepo.DeleteExistingClaim(_claimsItems.ClaimID);
+            bool deleteClaim = _claimsRepo.DequeueExistingClaim();
             Assert.IsTrue(deleteClaim);
         }
     }

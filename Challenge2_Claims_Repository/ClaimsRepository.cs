@@ -8,60 +8,29 @@ namespace Challenge2_Claims_Repository
 {
     public class ClaimsRepository
     {
-        protected readonly List<Claims> _claimsRepo = new List<Claims>();
+        protected readonly Queue<Claims> _claimsRepo = new Queue<Claims>();
 
         public bool AddNewClaim(Claims newClaim)
         {
             int startingCount = _claimsRepo.Count;
-            _claimsRepo.Add(newClaim);
+            _claimsRepo.Enqueue(newClaim);
             bool wasAdded = _claimsRepo.Count > startingCount;
             return wasAdded;
         }
-        public List<Claims> ReadAllClaims()
+        public Queue<Claims> ReadAllClaims()
         {
             return _claimsRepo;
         }
 
-        public Claims ReadSpecificClaim(int claimID)
+        public Claims GrabNextClaim()
         {
-            foreach (Claims newClaim in _claimsRepo)
-            {
-                if (newClaim.ClaimID == claimID)
-                {
-                    return newClaim;
-                }
-            }
-            return null;
-        }
-        public bool UpdateExistingClaim(int originalID, Claims updatedClaim)
-        {
-            Claims oldClaim = ReadSpecificClaim(originalID);
-            
-            if (oldClaim != null)
-            {
-                oldClaim.ClaimID = updatedClaim.ClaimID;
-                oldClaim.TypeOfClaim = updatedClaim.TypeOfClaim;
-                oldClaim.ClaimDescription = updatedClaim.ClaimDescription;
-                oldClaim.ClaimAmount = updatedClaim.ClaimAmount;
-                oldClaim.DateOfIncident = updatedClaim.DateOfIncident;
-                oldClaim.DateOfClaim = updatedClaim.DateOfClaim;
-
-                return true;
-            }
-            return false;
+            return _claimsRepo.Peek();
         }
 
-        public bool DeleteExistingClaim(int existingClaim)
+        public bool DequeueExistingClaim()
         {
-            Claims claim = ReadSpecificClaim(existingClaim);
-
-            if (claim == null)
-            {
-                return false;
-            }
-
             int startingCount = _claimsRepo.Count;
-            _claimsRepo.Remove(claim);
+            _claimsRepo.Dequeue();
 
             if (startingCount > _claimsRepo.Count)
             {
