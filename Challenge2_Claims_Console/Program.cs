@@ -10,6 +10,8 @@ namespace Challenge2_Claims_Console
     {
         static void Main(string[] args)
         {
+            ProgramUI insurance = new ProgramUI();
+            insurance.Run();
         }
     }
 }

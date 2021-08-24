@@ -27,7 +27,7 @@ namespace Challenge2_Claims_Repository
         public decimal ClaimAmount { get; set; }
         public DateTime DateOfIncident { get; set; }
         public DateTime DateOfClaim { get; set; }
-        public bool IsValid 
+        public bool IsValid
         { 
             get
             {
