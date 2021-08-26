@@ -10,54 +10,28 @@ namespace Challenge3_Badges_Repository
     {
         protected readonly Dictionary<int, List<string>> _badgeAccessRepo = new Dictionary<int, List<string>>();
 
-        public bool CreateNewBadge(int badge, List<string> door)
+
+        public bool AddBadgeToRepo(int id, List<string> doors)
         {
             int initial = _badgeAccessRepo.Count();
-            _badgeAccessRepo.Add(badge, door);
+            _badgeAccessRepo.Add(id, doors);
             return _badgeAccessRepo.Count() > initial;
         }
 
 
         public bool AddDoorsToBadge(int badgeID, string door)
         {
-            Badges existingBadge = GetBadgeID(badgeID);
-            if (existingBadge != null)
-            {
-                existingBadge.DoorID.Add(door);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-
+            int initial = _badgeAccessRepo[badgeID].Count();
+            _badgeAccessRepo[badgeID].Add(door);
+            return _badgeAccessRepo[badgeID].Count () > initial;
         }
 
-        public bool DeleteAllDoorsFromBadge(int badgeID)
-        {
-            Badges existingBadge = GetBadgeID(badgeID);
-            if (existingBadge != null)
-            {
-                existingBadge.DoorID.Clear();
-                return true;
-            }
-            else
-            {
-                return false;
-            }
 
-        }public bool DeleteSingleDoorFromBadge(int badgeID, string door)
+        public bool DeleteSingleDoorFromBadge(int badgeID, string door)
         {
-            Badges existingBadge = GetBadgeID(badgeID);
-            if (existingBadge != null)
-            {
-                existingBadge.DoorID.Remove(door);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            int initial = _badgeAccessRepo[badgeID].Count();
+            _badgeAccessRepo[badgeID].Remove(door);
+            return _badgeAccessRepo[badgeID].Count() < initial;
         }
 
 
@@ -75,7 +49,7 @@ namespace Challenge3_Badges_Repository
                 if (keyValuePair.Key == id)
                 {
                     badge.BadgeID = id;
-                    badge.DoorID = keyValuePair.Value;
+                    badge.DoorAccessList = keyValuePair.Value;
                     return badge;
                 }
             }

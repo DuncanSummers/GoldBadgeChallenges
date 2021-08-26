@@ -10,12 +10,16 @@ namespace Challenge3_Badges_Repository
     public class Badges
     {
         public Badges() { }
+        public Badges(int id)
+        {
+            BadgeID = id;
+        }
         public Badges (int id, List<string> door)
         {
             BadgeID = id;
-            DoorID = door;
+            DoorAccessList = door;
         }
         public int BadgeID { get; set; }
-        public List<string> DoorID { get; set; }
+        public List<string> DoorAccessList { get; set; } = new List<string>();
     }
 }

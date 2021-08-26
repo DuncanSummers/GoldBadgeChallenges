@@ -10,6 +10,8 @@ namespace Challenge3_Badges_Console
     {
         static void Main(string[] args)
         {
+            ProgramUI security = new ProgramUI();
+            security.Run();
         }
     }
 }

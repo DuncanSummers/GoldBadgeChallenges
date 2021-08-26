@@ -11,6 +11,15 @@ namespace Challenge3_Badges_Tests
         private BadgesRepository _repo;
         private Badges _class;
 
+        [TestInitialize]
+        public void Arrange()
+        {
+            _repo = new BadgesRepository();
+            _class = new Badges(1234);
+            _class.DoorAccessList = new List<string> { "A1", "A2" };
+            _repo.AddBadgeToRepo(_class);
+        }
+
         [TestMethod]
         public void AddNewBadge_ShouldReturnTrue()
         {
@@ -21,7 +30,7 @@ namespace Challenge3_Badges_Tests
             door.Add("A1");
             
 
-            bool addResult = repo.CreateNewBadge(badges.BadgeID, door);
+            bool addResult = repo.AddBadgeToRepo(badges);
 
             Assert.IsTrue(addResult);
         }
@@ -29,54 +38,37 @@ namespace Challenge3_Badges_Tests
         [TestMethod]
         public void AddDoorsToBadge_ShouldReturnTrue()
         {
-            BadgesRepository repo = new BadgesRepository();
-            string door = "A1";
-            int badges = 11111;
 
-            bool addResult = repo.AddDoorsToBadge(badges, door);
+            string accessList =  "A9";
+            
 
-            Assert.IsTrue(addResult);
+            bool success = _repo.AddDoorsToBadge(1234, accessList);
+            
+
+            Assert.IsTrue(success);
         }
 
         [TestMethod]
         public void DeleteDoorFromBadge_ShouldReturnTrue()
         {
-            BadgesRepository repo = new BadgesRepository();
-            string door = "A1";
-            int badges = 11111;
 
-            bool deleteResult = repo.DeleteSingleDoorFromBadge(badges, door);
+            bool deleteResult = _repo.DeleteSingleDoorFromBadge(1234, "A1");
 
             Assert.IsTrue(deleteResult);
         }
 
-        [TestMethod]
-        public void DeleteAllFromBadge_ShouldReturnTrue()
-        {
-            BadgesRepository repo = new BadgesRepository();
-            int badgeID = 11111;
-
-            bool deleteResult = repo.DeleteAllDoorsFromBadge(badgeID);
-
-            Assert.IsTrue(deleteResult);
-        }
 
         [TestMethod]
-        public void ShowAllBadges_ShouldReturnTrue()
+        public void ShowAllBadges_CollectionShouldContainBadges()
         {
+            //arrange
             BadgesRepository repo = new BadgesRepository();
-            Dictionary<int, List<string>> keyValuePairs = new Dictionary<int, List<string>>();
-            string door = "A1";
-            int badges = 11111;
-
-            repo.AddDoorsToBadge(badges, door);
-
-            Dictionary<int, List<string>> keyValuePairs1 = repo.ShowBadges();
-
-            bool dictionaryHasPairs = keyValuePairs1.ContainsKey(badges);
-
-            Assert.IsTrue(dictionaryHasPairs);
+            Badges badge1 = new Badges(1234, new List<string> { "A1", "A2" });
+            //act
+            repo.AddBadgeToRepo(badge1);
+            Dictionary<int, List<string>> badges = repo.ShowBadges();
+            //assert
+            Assert.IsNotNull(badges);
         }
-
     }
 }
